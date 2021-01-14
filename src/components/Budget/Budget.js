@@ -8,11 +8,17 @@ import Loading from './../shared/Loading/Loading';
 import Nav from './../shared/Nav';
 import './Budget.css';
 import { connect } from 'react-redux'
-
+import { requestUserData } from '../../ducks/userReducer';
 
 class Budget extends Component {
 
+  componentDidMount() {
+    this.props.requestUserData()
+  }
+
   render() {
+    const { loading } = this.props.budget;
+    const { firstName, lastName } = this.props.user;
     return (
       <Background>
         {true ? <Loading /> : null}
